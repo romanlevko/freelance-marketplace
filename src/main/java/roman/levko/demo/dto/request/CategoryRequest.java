@@ -4,12 +4,12 @@ package roman.levko.demo.dto.request;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 public class CategoryRequest {
-    @NotNull
+    @NotBlank
     private String name;
 
 
