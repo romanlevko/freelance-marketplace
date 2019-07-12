@@ -6,6 +6,7 @@ import roman.levko.demo.dto.request.CategoryRequest;
 import roman.levko.demo.dto.response.CategoryResponse;
 import roman.levko.demo.service.CategoryService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping
-    public void create (@RequestBody CategoryRequest request) {categoryService.create(request);}
+    public void create (@Valid @RequestBody CategoryRequest request) {categoryService.create(request);}
 
     @GetMapping
     public List <CategoryResponse> findAll () {
@@ -24,7 +25,7 @@ public class CategoryController {
     }
 
     @PutMapping
-    public void update(Long id, @RequestBody CategoryRequest request) {
+    public void update(Long id, @Valid @RequestBody CategoryRequest request) {
         categoryService.update(id, request);
     }
 

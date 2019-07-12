@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import roman.levko.demo.dto.request.ClientRequest;
 import roman.levko.demo.service.ClientService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping ("/client")
 public class ClientController {
@@ -16,7 +18,7 @@ public class ClientController {
     private ClientService clientService;
 
     @PostMapping
-    public void create (@RequestBody ClientRequest request) {
+    public void create (@Valid @RequestBody ClientRequest request) {
         clientService.create(request);
     }
 }
