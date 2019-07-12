@@ -23,6 +23,7 @@ public class Job {
     private Long volume;
     private Date deadline;
     private Double pricePerWord;
+    @Column (columnDefinition = "text")
     private String description;
     private String sourceLanguage;
     private String targetLanguage;
