@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ClientRequest {
+public class TranslatorRequest {
     @NotBlank
     private String name;
     @NotBlank
@@ -24,6 +24,5 @@ public class ClientRequest {
     @NotEmpty
     private Double ranking;
     @NotEmpty
-    private List <Long> jobs;
-
+    private List<Long> jobs;
 }

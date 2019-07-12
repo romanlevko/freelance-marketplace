@@ -9,6 +9,7 @@ import roman.levko.demo.entity.Job;
 import roman.levko.demo.repository.AssignmentRepository;
 import roman.levko.demo.repository.ClientRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,17 +34,13 @@ public class ClientService {
         client.setCity(request.getCity());
         client.setRanking(request.getRanking());
 
-        Assignment assignment = new Assignment();
-        assignment = assignmentRepository.save (assignment);
-
-        client.setAssignment (assignment);
-
         if (request.getJobs() != null) {
             List<Job> collect = request.getJobs().stream().map(jobService::findOne).collect(Collectors.toList());
-            client.setJobs (collect);
+            client.setJobs(collect);
         }
 
         clientRepository.save(client);
+
 
     }
 }

@@ -31,6 +31,6 @@ public class Client {
     @ManyToMany
     private List<Job> jobs = new ArrayList<>();
 
-    @OneToOne
-    private Assignment assignment;
+    @OneToMany(mappedBy = "client")
+    private List<Assignment> assignments = new ArrayList<>();
 }

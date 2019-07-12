@@ -17,12 +17,12 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne (mappedBy = "assignment")
+    @ManyToOne
     private Translator translator;
 
     @OneToOne (mappedBy = "assignment")
     private Job job;
 
-    @OneToOne(mappedBy = "assignment")
+    @ManyToOne
     private Client client;
 }

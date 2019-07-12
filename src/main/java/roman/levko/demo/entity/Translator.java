@@ -33,7 +33,7 @@ public class Translator {
     @ManyToMany (mappedBy = "translators")
     private List<Job> jobs = new ArrayList<>();
 
-    @OneToOne
-    private Assignment assignment;
+    @OneToMany (mappedBy = "translator")
+    private List<Assignment> assignments = new ArrayList<>();
 
 }
