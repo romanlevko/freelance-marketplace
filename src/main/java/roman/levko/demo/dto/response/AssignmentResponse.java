@@ -8,13 +8,13 @@ import roman.levko.demo.entity.Assignment;
 @Setter
 public class AssignmentResponse {
 
-    private JobResponse job;
+//    private JobResponse job;
     private ClientResponse client;
     private TranslatorResponse translator;
 
     public AssignmentResponse (Assignment assignment) {
 
-        job = new JobResponse(assignment.getJob());
+//        job = new JobResponse(assignment.getJob());
         client = new ClientResponse(assignment.getClient());
         translator = new TranslatorResponse(assignment.getTranslator());
 

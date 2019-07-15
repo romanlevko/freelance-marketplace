@@ -19,7 +19,6 @@ public class JobController {
         jobService.create(request);
     }
 
-
     @PutMapping
     public void update(Long id, @Valid @RequestBody JobRequest request) {
         jobService.update(id, request);

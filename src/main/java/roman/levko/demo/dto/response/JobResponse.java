@@ -3,8 +3,11 @@ package roman.levko.demo.dto.response;
 import lombok.Getter;
 import lombok.Setter;
 import roman.levko.demo.entity.Job;
+import roman.levko.demo.entity.Translator;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,6 +22,8 @@ public class JobResponse {
     private String sourceLanguage;
     private String targetLanguage;
     private CategoryResponse category;
+    private AssignmentResponse assignment;
+    private List<Long> translators;
 
     public JobResponse (Job job) {
         id = job.getId();
@@ -30,5 +35,6 @@ public class JobResponse {
         sourceLanguage = job.getSourceLanguage();
         targetLanguage = job.getTargetLanguage();
         category = new CategoryResponse(job.getCategory());
+        assignment = new AssignmentResponse(job.getAssignment());
     }
 }

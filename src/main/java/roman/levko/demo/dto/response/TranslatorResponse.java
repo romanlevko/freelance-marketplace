@@ -19,7 +19,7 @@ public class TranslatorResponse {
     private Long yearsOfExperience;
     private Double ranking;
 
-    public TranslatorResponse (Translator translator) {
+    public TranslatorResponse(Translator translator) {
 
         id = translator.getId();
         firstName = translator.getFirstName();

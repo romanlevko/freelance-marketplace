@@ -9,11 +9,11 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class AssignmentRequest {
 
-    @NotNull
-    private Long clientId;
+//    @NotNull
+//    private Long jobId;
 
     @NotNull
-    private Long jobId;
+    private Long clientId;
 
     @NotNull
     private Long translatorId;

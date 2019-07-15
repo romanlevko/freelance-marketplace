@@ -3,6 +3,7 @@ package roman.levko.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import roman.levko.demo.dto.request.JobRequest;
+import roman.levko.demo.entity.Assignment;
 import roman.levko.demo.entity.Category;
 import roman.levko.demo.entity.Job;
 import roman.levko.demo.repository.JobRepository;
@@ -15,6 +16,9 @@ public class JobService {
 
     @Autowired
     CategoryService categoryService;
+
+    @Autowired
+    AssignmentService assignmentService;
 
     public void create(JobRequest request) {
         jobRepository.save(jobRequestToJob(null, request));
@@ -33,9 +37,11 @@ public class JobService {
             job = new Job();
         }
 
-        Category category =
-                categoryService.findOne(request.getCategoryId());
+        Category category = categoryService.findOne(request.getCategoryId());
+        Assignment assignment = assignmentService.findOne(request.getAssignmentId());
+
         job.setCategory(category);
+        job.setAssignment(assignment);
         job.setPricePerWord(request.getPricePerWord());
         job.setName(request.getName());
         job.setDescription(request.getDescription());
@@ -47,7 +53,7 @@ public class JobService {
     }
 
     public Job findOne(Long id) {
-        return jobRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Product with id " + id + " not exists"));
+        return jobRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Job with id " + id + " not exists"));
     }
 }
 
