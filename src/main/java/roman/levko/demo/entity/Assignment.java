@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -17,10 +19,13 @@ public class Assignment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private LocalDate date;
+    private LocalTime time;
+
     @ManyToOne
     private Translator translator;
 
-    @OneToOne (mappedBy = "assignment")
+    @OneToOne(mappedBy = "assignment")
     private Job job;
 
     @ManyToOne

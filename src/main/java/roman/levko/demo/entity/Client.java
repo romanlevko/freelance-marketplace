@@ -23,6 +23,7 @@ public class Client {
     private String country;
     private String city;
     private Double ranking;
+    private String image;
 
 
     @ManyToMany

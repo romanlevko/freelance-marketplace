@@ -1,15 +1,18 @@
 package roman.levko.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import roman.levko.demo.dto.request.ClientRequest;
+import roman.levko.demo.dto.request.PaginationRequest;
 import roman.levko.demo.dto.response.ClientResponse;
+import roman.levko.demo.dto.response.PageResponse;
 import roman.levko.demo.entity.Category;
 import roman.levko.demo.entity.Client;
 import roman.levko.demo.entity.Job;
-import roman.levko.demo.repository.CategoryRepository;
 import roman.levko.demo.repository.ClientRepository;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,11 +29,23 @@ public class ClientService {
     @Autowired
     private JobService jobService;
 
+    @Autowired
+    private FileService fileService;
+
     public void create(ClientRequest request) {
         clientRepository.save(clientRequestToClient(null, request));
     }
 
-    public void update (Long id, ClientRequest request) {
+    public PageResponse<ClientResponse> findPage(PaginationRequest paginationRequest) {
+
+        Page<Client> page = clientRepository.findAll(paginationRequest.toPageable());
+        return new PageResponse<>(page.getTotalPages(),
+                page.getTotalElements(),
+                page.get().map(ClientResponse::new).collect(Collectors.toList()));
+
+    }
+
+    public void update(Long id, ClientRequest request) {
         clientRepository.save(clientRequestToClient(findOne(id), request));
     }
 
@@ -41,6 +56,16 @@ public class ClientService {
     private Client clientRequestToClient(Client client, ClientRequest request) {
         if (client == null) {
             client = new Client();
+        }
+
+        if (request.getImage() != null && !request.getImage().isEmpty()) {
+            String path = null;
+            try {
+                path = fileService.saveFile(request.getImage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            client.setImage(path);
         }
 
         client.setName(request.getName());
@@ -57,6 +82,7 @@ public class ClientService {
 
         if (request.getCategories() != null) {
             List<Category> collect = request.getCategories().stream().map(categoryService::findOne).collect(Collectors.toList());
+            client.setCategories(collect);
         }
 
         return client;

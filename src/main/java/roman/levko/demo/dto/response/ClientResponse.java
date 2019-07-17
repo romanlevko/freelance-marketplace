@@ -15,8 +15,9 @@ public class ClientResponse {
     private String country;
     private String city;
     private Double ranking;
+    private String image;
 
-    public ClientResponse (Client client) {
+    public ClientResponse(Client client) {
 
         id = client.getId();
         name = client.getName();
@@ -25,6 +26,7 @@ public class ClientResponse {
         country = client.getCountry();
         city = client.getCity();
         ranking = client.getRanking();
+        image = client.getImage();
 
     }
 }

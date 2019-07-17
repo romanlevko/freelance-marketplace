@@ -25,7 +25,7 @@ public class JobResponse {
     private AssignmentResponse assignment;
     private List<Long> translators;
 
-    public JobResponse (Job job) {
+    public JobResponse(Job job) {
         id = job.getId();
         name = job.getName();
         description = job.getDescription();

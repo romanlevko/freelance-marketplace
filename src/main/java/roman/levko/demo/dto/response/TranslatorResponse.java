@@ -18,6 +18,7 @@ public class TranslatorResponse {
     private Long age;
     private Long yearsOfExperience;
     private Double ranking;
+    private String image;
 
     public TranslatorResponse(Translator translator) {
 
@@ -31,6 +32,7 @@ public class TranslatorResponse {
         age = translator.getAge();
         yearsOfExperience = translator.getYearsOfExperience();
         ranking = translator.getRanking();
+        image = translator.getImage();
 
     }
 }

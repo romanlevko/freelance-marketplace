@@ -18,16 +18,16 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToMany (mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories")
     private List<Translator> translators = new ArrayList<>();
 
-    @ManyToMany (mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories")
     private List<Client> clients = new ArrayList<>();
 
-    @OneToOne (mappedBy = "category")
+    @OneToOne(mappedBy = "category")
     private Job job;
 
 }

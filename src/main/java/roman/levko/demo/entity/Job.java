@@ -23,7 +23,7 @@ public class Job {
     private Long volume;
     private Date deadline;
     private Double pricePerWord;
-    @Column (columnDefinition = "text")
+    @Column(columnDefinition = "text")
     private String description;
     private String sourceLanguage;
     private String targetLanguage;
@@ -31,7 +31,7 @@ public class Job {
     @ManyToMany
     private List<Translator> translators = new ArrayList<>();
 
-    @ManyToMany (mappedBy = "jobs")
+    @ManyToMany(mappedBy = "jobs")
     private List<Client> clients = new ArrayList<>();
 
     @OneToOne

@@ -26,14 +26,15 @@ public class Translator {
     private Long age;
     private Long yearsOfExperience;
     private Double ranking;
+    private String image;
 
     @ManyToMany
     private List<Category> categories = new ArrayList<>();
 
-    @ManyToMany (mappedBy = "translators")
+    @ManyToMany(mappedBy = "translators")
     private List<Job> jobs = new ArrayList<>();
 
-    @OneToMany (mappedBy = "translator")
+    @OneToMany(mappedBy = "translator")
     private List<Assignment> assignments = new ArrayList<>();
 
 }

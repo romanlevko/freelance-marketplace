@@ -32,4 +32,6 @@ public class TranslatorRequest {
     private Double ranking;
     @NotEmpty
     private List<Long> categories;
+
+    private String image;
 }

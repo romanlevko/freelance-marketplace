@@ -10,17 +10,19 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
     @PostMapping
-    public void create (@Valid @RequestBody CategoryRequest request) {categoryService.create(request);}
+    public void create(@Valid @RequestBody CategoryRequest request) {
+        categoryService.create(request);
+    }
 
     @GetMapping
-    public List <CategoryResponse> findAll () {
+    public List<CategoryResponse> findAll() {
         return categoryService.findAll();
     }
 

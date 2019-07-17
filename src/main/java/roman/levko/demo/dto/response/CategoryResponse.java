@@ -10,7 +10,7 @@ public class CategoryResponse {
     private String name;
     private Long id;
 
-    public CategoryResponse (Category category) {
+    public CategoryResponse(Category category) {
         name = category.getName();
         id = category.getId();
     }

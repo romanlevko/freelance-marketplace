@@ -6,4 +6,4 @@ import roman.levko.demo.entity.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
-    }
+}

@@ -1,12 +1,18 @@
 package roman.levko.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import roman.levko.demo.dto.request.JobRequest;
+import roman.levko.demo.dto.request.PaginationRequest;
+import roman.levko.demo.dto.response.JobResponse;
+import roman.levko.demo.dto.response.PageResponse;
 import roman.levko.demo.entity.Assignment;
 import roman.levko.demo.entity.Category;
 import roman.levko.demo.entity.Job;
 import roman.levko.demo.repository.JobRepository;
+
+import java.util.stream.Collectors;
 
 @Service
 public class JobService {
@@ -20,8 +26,18 @@ public class JobService {
     @Autowired
     AssignmentService assignmentService;
 
+
     public void create(JobRequest request) {
         jobRepository.save(jobRequestToJob(null, request));
+    }
+
+    public PageResponse<JobResponse> findPage(PaginationRequest paginationRequest) {
+
+        Page<Job> page = jobRepository.findAll(paginationRequest.toPageable());
+        return new PageResponse<>(page.getTotalPages(),
+                page.getTotalElements(),
+                page.get().map(JobResponse::new).collect(Collectors.toList()));
+
     }
 
     public void update(Long id, JobRequest request) {
@@ -36,6 +52,7 @@ public class JobService {
         if (job == null) {
             job = new Job();
         }
+
 
         Category category = categoryService.findOne(request.getCategoryId());
         Assignment assignment = assignmentService.findOne(request.getAssignmentId());

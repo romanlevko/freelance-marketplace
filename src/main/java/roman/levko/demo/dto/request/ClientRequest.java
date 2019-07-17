@@ -24,7 +24,8 @@ public class ClientRequest {
     @NotNull
     private Double ranking;
 
+    private String image;
     private List<Long> jobs;
-    private List <Long> categories;
+    private List<Long> categories;
 
 }

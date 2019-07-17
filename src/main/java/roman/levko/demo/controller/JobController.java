@@ -8,7 +8,7 @@ import roman.levko.demo.service.JobService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping ("/job")
+@RequestMapping("/job")
 public class JobController {
 
     @Autowired
